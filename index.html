@@ -17,6 +17,14 @@
         interface.setCookie('favoriteStreamer', 'Dealcraft')
         valueOut.innerHTML = interface.getValue('favoriteStreamer')
 
+        setTimeout( () => {
+            interface.setCookie('favoriteStreamer', 'L3TPlayer')
+        }, 5000)
+
+        setTimeout( () => {
+            interface.delete('favoriteStreamer')
+        }, 10000)
+
     </script>
 </body>
 </html>
