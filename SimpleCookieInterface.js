@@ -51,7 +51,11 @@ class SimpleCookieInterface {
     }
 
     getValue(key) {
-        var _value = document.cookie.split('; ').find(row => row.startsWith(key + '=')).split('=')[1]
+        try {
+            var _value = document.cookie.split('; ').find(row => row.startsWith(key + '=')).split('=')[1]
+        } catch (e) {
+            return false
+        }
         var _exists = false
         this.cookies.forEach((cookie, index)=>{
             if(cookie.key === key && !_exists){
@@ -60,6 +64,21 @@ class SimpleCookieInterface {
                 this.cookies[index] = _cookie
             }
         })
-        return document.cookie.split('; ').find(row => row.startsWith(key + '=')).split('=')[1]
+
+        return _value
+    }
+
+    delete(key) {
+        var _exists = false
+        this.cookies.forEach((cookie, index)=>{
+            if(cookie.key === key && !_exists){
+                _exists = true
+                this.cookies.splice(index, 1)
+                if(this.getValue(key)){
+                    var _expires = new Date(Date.now()-24*60*60*1000).toUTCString()
+                    document.cookie =  cookie.key + "=" + cookie.value + '; expires=' + _expires + ';'
+                }
+            }
+        })
     }
 }
