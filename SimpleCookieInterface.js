@@ -47,6 +47,19 @@ class SimpleCookieInterface {
             }
         })
         
-        if(!_exists)this.cookies.push(_cookie)
+        if(!_exists) this.cookies.push(_cookie)
+    }
+
+    getValue(key) {
+        var _value = document.cookie.split('; ').find(row => row.startsWith(key + '=')).split('=')[1]
+        var _exists = false
+        this.cookies.forEach((cookie, index)=>{
+            if(cookie.key === key && !_exists){
+                _exists = true
+                var _cookie = {...this.cookies[index], value: _value}
+                this.cookies[index] = _cookie
+            }
+        })
+        return document.cookie.split('; ').find(row => row.startsWith(key + '=')).split('=')[1]
     }
 }

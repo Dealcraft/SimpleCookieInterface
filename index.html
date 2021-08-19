@@ -7,11 +7,16 @@
     <title>SimpleCookieInterface</title>
 </head>
 <body>
+    <output id="value"></output>
     <script src="SimpleCookieInterface.js"></script>
     <script>
-        var interface = new SimpleCookieInterface()
+        const valueOut = document.querySelector('#value')
+        const interface = new SimpleCookieInterface()
+
         console.log(interface.cookies)
         interface.setCookie('favoriteStreamer', 'Dealcraft')
+        valueOut.innerHTML = interface.getValue('favoriteStreamer')
+
     </script>
 </body>
 </html>
