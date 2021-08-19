@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimpleCookieInterface</title>
+</head>
+<body>
+    <output id="value"></output>
+    <script src="SimpleCookieInterface.js"></script>
+    <script>
+        const valueOut = document.querySelector('#value')
+        const interface = new SimpleCookieInterface()
+
+        console.log(interface.cookies)
+        interface.setCookie('favoriteStreamer', 'Dealcraft')
+        valueOut.innerHTML = interface.getValue('favoriteStreamer')
+
+    </script>
+</body>
+</html>
