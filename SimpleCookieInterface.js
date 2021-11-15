@@ -18,7 +18,7 @@ class SimpleCookieInterface {
             }
             this.cookies.push(_obj)
         })
-        this.defaultOptions = {...defaultOptions, ...this.defaultOptions}
+        this.defaultOptions = {...this.defaultOptions, ...defaultOptions}
     }
 
     setCookie(key, value, options) {
